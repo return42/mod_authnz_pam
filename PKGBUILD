@@ -14,12 +14,12 @@ source=("https://github.com/adelton/mod_authnz_pam/archive/${pkgname}-${pkgver}.
 sha256sums=('2d0056aefc394607bcdaaa53638c09c100ebd10faaab7cfef29553bfd60b8892')
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "mod_authnz_pam-${pkgname}-${pkgver}"
 	apxs -c mod_authnz_pam.c -lpam -Wall -pedantic
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "mod_authnz_pam-${pkgname}-${pkgver}"
 	
 	APACHE_MOD_DIR=$(apxs -q libexecdir)
 	install -D -m755 .libs/mod_authnz_pam.so ${pkgdir}/${APACHE_MOD_DIR}/mod_authnz_pam.so
